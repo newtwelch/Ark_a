@@ -13,12 +13,14 @@
 
   <ItemGroup>
     <None Remove="Resources\Images\Bible_Light.png" />
+    <None Remove="Resources\Images\Logo_Fav.png" />
     <None Remove="Resources\Images\Music_Light.png" />
     <None Remove="Resources\Images\Table_Light.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\Images\Bible_Light.png" />
+    <Resource Include="Resources\Images\Logo_Fav.png" />
     <Resource Include="Resources\Images\Music_Light.png" />
     <Resource Include="Resources\Images\Table_Light.png" />
   </ItemGroup>

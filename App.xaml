@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Resources/Styles/ListboxStyles.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/Styles/TextboxStyles.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/Styles/ScrollBarStyles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/Styles/ButtonStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

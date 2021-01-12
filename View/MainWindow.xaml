@@ -7,28 +7,97 @@
         xmlns:ViewModel="clr-namespace:Ark.ViewModel" x:Class="Ark.MainWindow"
         mc:Ignorable="d"
         Title="Arc" 
+        WindowStyle="None"
         MinHeight="300"
         MinWidth="500"
         Width="1280"
-        Height="720"
-        Background="#16191C">
+        MaxHeight="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}"
+        Background="#16191C" d:DesignHeight="547">
+    
     <Window.DataContext>
         <ViewModel:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
 
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="75"
+                      CornerRadius="0"
+                      GlassFrameThickness="0,0,0,1"
+                      ResizeBorderThickness="5"
+                      NonClientFrameEdges="None"
+                      UseAeroCaptionButtons="False"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        
+        
+        <!-- Grid Definitions -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition MaxWidth="75"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <!-- Grid Definitions -->
+        
+        
+        <!-- Window Frame -->
+        <Grid Grid.Row="0"
+              Grid.Column="0">
+            <Image Source="pack://application:,,,/Resources/Images/Logo_Fav.png"
+                   WindowChrome.IsHitTestVisibleInChrome="True"
+                   Width="60"
+                   Height="60"/>
+        </Grid>
+        
+        <Grid Grid.Row="0"
+              Grid.Column="1"
+              Background="{DynamicResource _containerLight}">
+            <!-- Window Buttons -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="20 0">
+                
+                <!-- Hide Button -->
+                <Button Click="hideClick"
+                        Style="{StaticResource windowButtonStyle}">
+                    <Ellipse Width="25"
+                             Height="25"
+                             Fill="{DynamicResource _greenColor}"/>
+                </Button>
+                <!-- Resize Button -->
+                <Button Click="resizeClick"
+                        Style="{StaticResource windowButtonStyle}">
+                    <Ellipse Width="25"
+                             Height="25"
+                             Fill="{DynamicResource _orangeColor}"/>
+                </Button>
+                <!-- Close Button -->
+                <Button Click="closeClick"
+                        Style="{StaticResource windowButtonStyle}">
+                    <Ellipse Width="25"
+                             Height="25"
+                             Fill="{DynamicResource _redColor}"/>
+                </Button>
+                <!-- Window Buttons -->
+            </StackPanel>
+            
+        </Grid>
+        <!-- Window Frame -->
 
-        <Rectangle Fill="{DynamicResource _containerLight}"/>
+        
+        <!-- Navigation Bar -->
+        <Rectangle Fill="{DynamicResource _containerLight}"
+                 Grid.Row="1"/>
+        <!-- Navigation Bar -->
+        
+        
+        <!-- Navigation Items -->
         <ListBox x:Name="MainMenu"
-                 Grid.Row="1"
+                 Grid.Row="0"
+                 Grid.RowSpan="2"
                  HorizontalContentAlignment="Center"
                  VerticalContentAlignment="Center"
                  Style="{StaticResource navListStyle}"
@@ -37,7 +106,7 @@
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Height="35">
+                    <Grid Height="30">
                         <Image Source="{Binding IconPath}"
                                HorizontalAlignment="Stretch" 
                                VerticalAlignment="Center" />
@@ -46,12 +115,17 @@
             </ListBox.ItemTemplate>
 
         </ListBox>
+        <!-- Navigation Items -->
 
+        
         <!-- Content -->
         <Frame Grid.Column="1"
-               Grid.RowSpan="3"
-               Margin="20"
+               Grid.Row="2"
+               Margin="20 0 -40 0"
                NavigationUIVisibility="Hidden"
                Content="{Binding ElementName=MainMenu, Path=SelectedItem.UserControl}"/>
+        <!-- Content -->
+        
+        
     </Grid>
 </Window>

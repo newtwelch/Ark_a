@@ -73,7 +73,6 @@
                         <Trigger Property="IsSelected" Value="true">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource _primaryBlue}"/>
                             <Setter TargetName="Border" Property="Cursor" Value="Arrow"/>
-                            <Setter Property="Foreground" Value="{DynamicResource _contentLight}"/>
                         </Trigger>
 
                         <MultiTrigger>
